@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 100px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 4px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+    }
+
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .message {
+      color: #ff0000;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Registration</h2>
+    <form action="register.php" method="post">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required>
+
+      <input type="submit" value="Register">
+      <div class="message">
+        <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+          $username = $_POST["username"];
+          $password = $_POST["password"];
+
+          // Sample registration logic
+          // You would need to replace this with your actual implementation
+
+          // Check if the username is available
+          $existingUsers = ["admin", "user1", "user2"]; // Example list of existing usernames
+
+          if (in_array($username, $existingUsers)) {
+            echo "Username is already taken.";
+          } else {
+            // Store the user information in the database (e.g., using SQL)
+            // ...
+            // Registration successful
+            echo "Registration successful!";
+          }
+        }
+        ?>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
